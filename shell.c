@@ -32,5 +32,7 @@ int main(void)
 		else
 			wait(&status);
 	}
+	free(line);
+	free(commands);
 	return (0);
 }
