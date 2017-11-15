@@ -18,9 +18,11 @@ typedef struct ali {
 	/*function pointer*/
 } alias;
 
+int countargs(char *line);
 int _strcmp(char *s1, char*s2);
 int _strlen(char *s);
 char *_strconcat(char *s1, char *s2);
 char *_strdup(char *s);
+char **parser(char *line, int size);
 
 #endif
