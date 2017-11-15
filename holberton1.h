@@ -8,4 +8,9 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+int _strcmp(char *s1, char*s2);
+int _strlen(char *s);
+char *_strconcat(char *s1, char *s2);
+char *_strdup(char *s);
+
 #endif
