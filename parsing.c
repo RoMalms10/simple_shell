@@ -8,9 +8,9 @@
  *
  * Return: An unsigned integer indicating length.
  */
-size_t countargs(char *line)
+int countargs(char *line)
 {
-	size_t i, count, flag;
+	int i, count, flag;
 
 	flag = i = 0;
 	count = 1;
@@ -37,11 +37,11 @@ size_t countargs(char *line)
  *
  * Return: A pointer to an array of strings.
  */
-char **parser(char *line, size_t size)
+char **parser(char *line, int size)
 {
 	char **token_list = malloc(sizeof(char *) * size);
 	char *token;
-	size_t i = 0;
+	int i = 0;
 
 	if (line == NULL || token_list == NULL)
 		exit(EXIT_FAILURE);
