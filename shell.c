@@ -30,8 +30,7 @@ int main(int argc, __attribute__((unused))char **argv, __attribute__((unused))ch
 		{
 			count = countargs(line);
 			args = parser(line, count);
-			/*search function with args*/
-			execution(args);
+			interpreter(args);
 		}
 		else if (my_pid == -1)
 		{
