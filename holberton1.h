@@ -7,6 +7,8 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
+#include <time.h>
 
 typedef struct bin {
 	char *name;
@@ -25,5 +27,6 @@ int _strlen(char *s);
 char *_strconcat(char *s1, char *s2);
 char *_strdup(char *s);
 char **parser(char *line, int size);
+void interpreter(char **args);
 
 #endif
