@@ -11,7 +11,7 @@
 typedef struct bin {
 	char *name;
 	/*function pointer*/
-} built-in;
+} builtin;
 
 typedef struct ali {
 	char *name;

@@ -11,6 +11,7 @@ char *_getenv(const char *name)
 {
 	char *address;
 	size_t len, env_list, letter, i;
+	extern char **environ;
 
 	for (len = 0; name[len] != '\0';)
 		len++;

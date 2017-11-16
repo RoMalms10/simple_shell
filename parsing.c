@@ -16,12 +16,12 @@ int countargs(char *line)
 	count = 1;
 	while (line[i] != '\0' && flag == 0)
 	{
-		if (line[i] == " " && flag == 0)
+		if (line[i] == ' ' && flag == 0)
 		{
 			count++;
-			flag == 1;
+			flag = 1;
 		}
-		else if (line[i] != " ")
+		else if (line[i] != ' ')
 			flag = 0;
 		i++;
 	}
@@ -46,7 +46,7 @@ char **parser(char *line, int size)
 	if (line == NULL || token_list == NULL)
 		exit(EXIT_FAILURE);
 
-	token = strtok(&line, " '\n'", stdin);
+	token = strtok(line, " '\n'");
 	if (token == NULL)
 		return (NULL);
 	while (i < size)
