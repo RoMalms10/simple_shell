@@ -27,6 +27,8 @@ int _strlen(char *s);
 char *_strconcat(char *s1, char *s2);
 char *_strdup(char *s);
 char **parser(char *line, int size);
+char **search(char **args);
 void interpreter(char **args);
+void edit_equal_sign(char **s);
 
 #endif

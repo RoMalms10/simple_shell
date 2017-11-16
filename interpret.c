@@ -11,8 +11,6 @@ void interpreter(char **args)
 	struct stat sb;
 
 	if (stat(args[0], &sb) == -1)
-	{
-		/*search(args);*/;
-	}
+		search(args);
 	execution(args);
 }

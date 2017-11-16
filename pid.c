@@ -7,8 +7,10 @@
  */
 pid_t get_pid(void)
 {
-    my_pid = getpid();
-    return (my_pid);
+	pid_t my_pid;
+
+	my_pid = getpid();
+	return (my_pid);
 }
 
 /**
@@ -18,7 +20,8 @@ pid_t get_pid(void)
  */
 pid_t get_ppid(void)
 {
-        pid_t my_ppid;
+	pid_t my_ppid;
+
         my_ppid = getppid();
         return (my_ppid);
 }
