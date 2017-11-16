@@ -9,16 +9,18 @@
   * @env: the environment
   * Return: 0, success, otherwise the child exits the functions on errors
   */
-int main(int argc, char **argv, char **env)
+int main(int argc, __attribute__((unused))char **argv, __attribute__((unused))char **env)
 {
-	int loops, status;
+	int loops, status, count;
 	char *line = NULL;
 	char **args = NULL;
 	size_t n = 0;
 	pid_t my_pid;
 
 	if (argc > 1)
+	{
 		;/*do something with argv*/
+	}
 	for (loops = 1; 1; loops++)
 	{
 		printf("$ ");
