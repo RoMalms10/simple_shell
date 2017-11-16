@@ -27,31 +27,29 @@ char **search(char **args)
 		if (_strcmp(environ[x], name) == 0)
 			break;
 		else if (environ[x + 1] == NULL)
-		{
-			/*error*/
-		}
+			printf("Error\n");
 	}
 	printf("%s\n", environ[x]);
 	hold = _strdup(environ[x]);
+	printf("%s\n", hold);
 	edit_equal_sign(&hold);
+	printf("%s\n", hold);
 	command = parser(hold, countargs(hold));
 	for (x = 0; command[x] != NULL; x++)
 	{
+		write(STDOUT_FILENO, command[x], 20);
 		if (chdir(command[x]) == -1)
-		{
-			/*error*/
-		}
-		if (stat(args[0], &sb) == 0)
+			perror("Error\n");
+		if (stat(args[0], &sb) != -1)
 		{
 			args[0] = _strconcat(command[x], args[0]);
+			printf("%s\n", args[0]);
 			break;
 		}
 	}
 	chdir(cwd);
 	if (command[x] == NULL)
-	{
-		/*error*/
-	}
+		printf("Error\n");
 	return (args);
 }
 
@@ -67,8 +65,8 @@ void edit_equal_sign(char **s)
 
 	while (s[0][x] != '=')
 	{
-		s[0][x] = '\0';
+		s[0][x] = ':';
 		x++;
 	}
-	s[0][x] = '\0';
+	s[0][x] = ':';
 }

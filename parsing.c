@@ -42,7 +42,7 @@ char **parser(char *line, int size)
 	char **token_list = malloc(sizeof(char *) * size);
 	char *token;
 	int i = 0;
-	char delim = " :'\n'"
+	char *delim = " :'\n'";
 
 	if (line == NULL || token_list == NULL)
 		exit(EXIT_FAILURE);
@@ -52,7 +52,7 @@ char **parser(char *line, int size)
 		return (NULL);
 	while (i < size)
 	{
-		token_list[i] = token;
+		token_list[i] = _strdup(token);
 		token = strtok(NULL, " '\n'");
 		i++;
 	}
