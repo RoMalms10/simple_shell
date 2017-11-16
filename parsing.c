@@ -10,18 +10,23 @@
  */
 int countargs(char *line)
 {
-	int i, count, flag;
+	int i, count, flag, j;
+	char *delim = " :";
 
 	flag = i = 0;
 	count = 1;
-	while (line[i] != '\0' && flag == 0)
+	while (line[i] != '\0')
 	{
-		if (line[i] == ' ' && flag == 0)
+		for (j = 0; delim[j] != '\0'; j++)
 		{
-			count++;
-			flag = 1;
+			if (line[i] == delim[j] && flag == 0)
+			{
+				count++;
+				flag = 1;
+				break;
+			}
 		}
-		else if (line[i] != ' ')
+		if (delim[j] == '\0')
 			flag = 0;
 		i++;
 	}
@@ -53,7 +58,7 @@ char **parser(char *line, int size)
 	while (i < size)
 	{
 		token_list[i] = _strdup(token);
-		token = strtok(NULL, " '\n'");
+		token = strtok(NULL, " :'\n'");
 		i++;
 	}
 	return (token_list);

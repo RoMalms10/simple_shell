@@ -12,7 +12,7 @@ char **search(char **args)
 	char **command;
 	extern char **environ;
 	char *name = "PATH";
-	int x;
+	int x, count;
 	char *hold, *cwd;
 	struct stat sb;
 
@@ -27,29 +27,25 @@ char **search(char **args)
 		if (_strcmp(environ[x], name) == 0)
 			break;
 		else if (environ[x + 1] == NULL)
-			printf("Error\n");
+			perror("Error\n");
 	}
-	printf("%s\n", environ[x]);
 	hold = _strdup(environ[x]);
-	printf("%s\n", hold);
+	count = countargs(hold);
 	edit_equal_sign(&hold);
-	printf("%s\n", hold);
-	command = parser(hold, countargs(hold));
+	command = parser(hold, count);
 	for (x = 0; command[x] != NULL; x++)
 	{
-		write(STDOUT_FILENO, command[x], 20);
 		if (chdir(command[x]) == -1)
-			perror("Error\n");
+			perror("Error needs to stop");
 		if (stat(args[0], &sb) != -1)
 		{
 			args[0] = _strconcat(command[x], args[0]);
-			printf("%s\n", args[0]);
 			break;
 		}
 	}
 	chdir(cwd);
 	if (command[x] == NULL)
-		printf("Error\n");
+		perror("Error\n");
 	return (args);
 }
 
