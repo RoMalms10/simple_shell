@@ -8,7 +8,7 @@
   * @argv: an array of pointers to chars, arguments
   * Return: 0, success, otherwise the child exits the functions on errors
   */
-int main(void)
+void main(__attribute__ ((unused)) int argc, __attribute__ ((unused)) char **argv)
 {
 	int loops, count;
 	char *line;
@@ -28,10 +28,17 @@ int main(void)
 			exit(EXIT_FAILURE);
 		}
 		count = countargs(line);
+		if (count == -1)
+			perror("error");
 		args = parser(line, count);
+		if (args == NULL)
+			free(line);
 		interpreter(args);
-		free(line);
-		free(args);
+		if (args != NULL)
+		{
+			free(line);
+			free(args);
+		}
 	}
 	return (0);
 }

@@ -1,6 +1,7 @@
 #ifndef HOLBERTON_1
 #define HOLBERTON_1
 
+#include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
