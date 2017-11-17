@@ -20,7 +20,6 @@ void interpreter(char **args)
 		/*will return -1 if failure happened*/
 		if (search(args) == -1)
 		{
-			printf("Args worked\n");
 			/*send args to get freed*/
 			return;
 		}
