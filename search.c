@@ -1,7 +1,7 @@
 #include "holberton1.h"
 
 /**
-  *
+  * search - searches the environment
   *
   *
   *
@@ -16,10 +16,6 @@ int search(char **args)
 	char *hold, *cwd;
 	struct stat sb;
 
-	/*if (aliases(args) == 0)
-	  return (args);*/
-	if (search_builtins(args) == 0)
-		return (2);
 	cwd = getcwd(NULL, 0);
 	for (x = 0; environ[x] != NULL; x++)
 	{
