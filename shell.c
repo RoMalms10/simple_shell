@@ -24,7 +24,8 @@ int main(int argc, __attribute__((unused))char **argv, __attribute__((unused))ch
 	for (loops = 1; 1; loops++)
 	{
 		printf("$ ");
-		getline(&line, &n, stdin);
+		if (getline(&line, &n, stdin) == EOF)
+			exit(0);
 		my_pid = fork();
 		if (my_pid == 0)
 		{
