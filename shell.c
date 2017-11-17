@@ -6,17 +6,16 @@
   * Calls functions
   * @argc: argument count
   * @argv: an array of pointers to chars, arguments
-  * @env: the environment
   * Return: 0, success, otherwise the child exits the functions on errors
   */
-int main(int argc, char **argv, __attribute__((unused))char **env)
+int main(int argc, char **argv)
 {
-	int loops, status, count;
-	char *line = NULL;
-	char **args = NULL;
-	size_t n = 0;
-	pid_t my_pid;
+	int loops, count;
+	char *line;
+	char **args;
+	size_t n;
 
+	signal(SIGINT, SIG_IGN);
 	if (argc > 1)
 	{
 		count = countargs(argv[1]);
@@ -26,25 +25,20 @@ int main(int argc, char **argv, __attribute__((unused))char **env)
 	}
 	for (loops = 1; 1; loops++)
 	{
+		line = NULL;
+		n = 0;
+		args = NULL;
 		printf("$ ");
 		if (getline(&line, &n, stdin) == EOF)
+		{
+			printf("\n");
 			exit(EXIT_FAILURE);
-		my_pid = fork();
-		if (my_pid == 0)
-		{
-			count = countargs(line);
-			args = parser(line, count);
-			interpreter(args);
 		}
-		else if (my_pid == -1)
-		{
-			perror("Error");
-		}
-		else
-		{
-			wait(&status);
-		}
+		count = countargs(line);
+		args = parser(line, count);
+		interpreter(args);
 		free(line);
+		free(args);
 	}
 	return (0);
 }

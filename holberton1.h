@@ -12,7 +12,7 @@
 
 typedef struct bin {
 	char *name;
-	/*function pointer*/
+	int (*func)(void);
 } builtin;
 
 typedef struct ali {
@@ -20,14 +20,17 @@ typedef struct ali {
 	/*function pointer*/
 } alias;
 
+int search_builtins(char **args);
+int exit_function(void);
+int print_env(void);
 int countargs(char *line);
 int execution(char **args);
+int search(char **args);
 int _strcmp(char *s1, char*s2);
 int _strlen(char *s);
 char *_strconcat(char *s1, char *s2);
 char *_strdup(char *s);
 char **parser(char *line, int size);
-char **search(char **args);
 void interpreter(char **args);
 void edit_equal_sign(char **s);
 
