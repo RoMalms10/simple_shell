@@ -2,8 +2,8 @@
 
 /**
   * exit_function - exits the shell
-  *
-  *
+  * leave this spot open for arguments when taking options
+  * Return: 0 on success, will never make it there
   */
 int exit_function(void)
 {
@@ -13,8 +13,7 @@ int exit_function(void)
 
 /**
   * print_env - prints the environment
-  *
-  *
+  * Return: 0 on success
   */
 int print_env(void)
 {
