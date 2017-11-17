@@ -12,12 +12,18 @@ void interpreter(char **args)
 
 	if (stat(args[0], &sb) == -1)
 	{
-		/*if (aliases(args) == 0)
+		/*if (search_aliases(args) == 0)
 			return;*/
+		/* will return 0 if the job succeeds, thus don't continue*/
 		if (search_builtins(args) == 0)
 			return;
-		if (search(args) == 2)
+		/*will return -1 if failure happened*/
+		if (search(args) == -1)
+		{
+			printf("Args worked\n");
+			/*send args to get freed*/
 			return;
+		}
 	}
 	execution(args);
 }

@@ -1,11 +1,9 @@
 #include "holberton1.h"
 
 /**
-  * search - searches the environment
-  *
-  *
-  *
-  *
+  * search - searches directories for the the command
+  * @args: contains the commands to search for
+  * Return: -1 on failure, 0 on success
   */
 int search(char **args)
 {
@@ -17,13 +15,15 @@ int search(char **args)
 
 	cwd = getcwd(NULL, 0);
 	hold = _strdup(find_path(name));
+	if (hold == NULL)
+		return (-1);
 	count = countargs(hold);
 	edit_equal_sign(&hold);
 	command = parser(hold, count);
 	for (x = 0; command[x] != NULL; x++)
 	{
 		if (chdir(command[x]) == -1)
-			perror("Error needs to stop");
+			perror("chdir failed");
 		if (stat(args[0], &sb) != -1)
 		{
 			args[0] = _strconcat(command[x], args[0]);
@@ -31,16 +31,17 @@ int search(char **args)
 		}
 	}
 	chdir(cwd);
+	/*send command to get freed*/
 	if (command[x] == NULL)
-		return (2);
+		return (-1);
 	return (0);
 }
 
 /**
   * edit_equal_sign - gets rid of chars up until and including the 
   * equal sign in the environment string
-  * @s:
-  * Return:
+  * @s: the string to modify
+  * Return: Nothing, void
   */
 void edit_equal_sign(char **s)
 {
@@ -55,9 +56,9 @@ void edit_equal_sign(char **s)
 }
 
 /**
-  *
-  *
-  *
+  * search_builtins - searches the builtins for their functions
+  * @args: contains the command to search for
+  * Return: 0 on success
   */
 int search_builtins(char **args)
 {
@@ -69,11 +70,13 @@ int search_builtins(char **args)
 
 	int x, check;
 
-	check = -1;
+	check = 0;
 	for (x = 0; builtins[x].name != NULL; x++)
 	{
 		if (_strcmp(builtins[x].name, args[0]) == 0)
 			check = builtins[x].func();
 	}
+	if (builtins[x].name == NULL)
+		return (-1);
 	return (check);
 }
