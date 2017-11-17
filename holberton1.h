@@ -1,6 +1,7 @@
 #ifndef HOLBERTON_1
 #define HOLBERTON_1
 
+#include <stdarg.h>
 #include <signal.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,11 +30,12 @@ int execution(char **args);
 int search(char **args);
 int _strcmp(char *s1, char*s2);
 int _strlen(char *s);
+int interpreter(char **args);
 char *find_path(char *name);
 char *_strconcat(char *s1, char *s2);
 char *_strdup(char *s);
 char **parser(char *line, int size);
-void interpreter(char **args);
 void edit_equal_sign(char **s);
+void free_function(int n, ...);
 
 #endif

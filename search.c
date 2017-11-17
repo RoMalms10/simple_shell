@@ -7,7 +7,7 @@
   */
 int search(char **args)
 {
-	char **command;
+	char **command = NULL;
 	char *name = "PATH";
 	int x, count;
 	char *hold, *cwd;
@@ -22,8 +22,6 @@ int search(char **args)
 	command = parser(hold, count);
 	for (x = 0; command[x] != NULL; x++)
 	{
-		if (chdir(command[x]) == -1)
-			perror("chdir failed");
 		if (stat(args[0], &sb) != -1)
 		{
 			args[0] = _strconcat(command[x], args[0]);
@@ -31,9 +29,14 @@ int search(char **args)
 		}
 	}
 	chdir(cwd);
-	/*send command to get freed*/
+	free_function(1, cwd);
+	free_function(1, hold);
 	if (command[x] == NULL)
+	{
+//		free_function(2, command);
 		return (-1);
+	}
+//	free_function(2, command);
 	return (0);
 }
 
