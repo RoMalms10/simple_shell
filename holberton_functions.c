@@ -57,6 +57,8 @@ char *_strconcat(char *s1, char *s2)
 		j++;
 	}
 	strcon[j] = '\0';
+	free(s1);
+	free(s2);
 	return (strcon);
 }
 

@@ -8,7 +8,7 @@
   * @argv: an array of pointers to chars, arguments
   * Return: 0, success, otherwise the child exits the functions on errors
   */
-int main(int argc, char **argv)
+int main(void)
 {
 	int loops, count;
 	char *line;
@@ -16,13 +16,6 @@ int main(int argc, char **argv)
 	size_t n;
 
 	signal(SIGINT, SIG_IGN);
-	if (argc > 1)
-	{
-		count = countargs(argv[1]);
-		args = parser(argv[1], count);
-		interpreter(args);
-		return (0);
-	}
 	for (loops = 1; 1; loops++)
 	{
 		line = NULL;
