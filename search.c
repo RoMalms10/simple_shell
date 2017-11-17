@@ -7,7 +7,7 @@
   *
   *
   */
-char **search(char **args)
+int search(char **args)
 {
 	extern char **environ;
 	char **command;
@@ -17,10 +17,9 @@ char **search(char **args)
 	struct stat sb;
 
 	/*if (aliases(args) == 0)
-	  return (args);
-	  if (builtins(args) == 0)
-	  return (args);
-	  */
+	  return (args);*/
+	if (search_builtins(args) == 0)
+		return (2);
 	cwd = getcwd(NULL, 0);
 	for (x = 0; environ[x] != NULL; x++)
 	{
@@ -46,14 +45,14 @@ char **search(char **args)
 	chdir(cwd);
 	if (command[x] == NULL)
 		perror("Error\n");
-	return (args);
+	return (0);
 }
 
 /**
-  *
-  *
-  *
-  *
+  * edit_equal_sign - gets rid of chars up until and including the 
+  * equal sign in the environment string
+  * @s:
+  * Return:
   */
 void edit_equal_sign(char **s)
 {
@@ -65,4 +64,28 @@ void edit_equal_sign(char **s)
 		x++;
 	}
 	s[0][x] = ':';
+}
+
+/**
+  *
+  *
+  *
+  */
+int search_builtins(char **args)
+{
+	builtin builtins[] = {
+		{"exit", exit_function},
+		{"env", print_env},
+		{NULL, NULL}
+	};
+
+	int x, check;
+
+	check = -1;
+	for (x = 0; builtins[x].name != NULL; x++)
+	{
+		if (_strcmp(builtins[x].name, args[0]) == 0)
+			check = builtins[x].func();
+	}
+	return (check);
 }
