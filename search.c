@@ -9,7 +9,6 @@
   */
 int search(char **args)
 {
-	extern char **environ;
 	char **command;
 	char *name = "PATH";
 	int x, count;

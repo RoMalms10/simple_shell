@@ -41,6 +41,7 @@ char *_getenv(const char *name)
 char *find_path(char *name)
 {
 	int x;
+	extern char **environ;
 
 	for (x = 0; environ[x] != NULL; x++)
 	{
