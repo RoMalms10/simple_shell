@@ -9,7 +9,7 @@
   * @env: the environment
   * Return: 0, success, otherwise the child exits the functions on errors
   */
-int main(int argc, __attribute__((unused))char **argv, __attribute__((unused))char **env)
+int main(int argc, char **argv, __attribute__((unused))char **env)
 {
 	int loops, status, count;
 	char *line = NULL;
@@ -19,13 +19,16 @@ int main(int argc, __attribute__((unused))char **argv, __attribute__((unused))ch
 
 	if (argc > 1)
 	{
-		;/*do something with argv*/
+		count = countargs(argv[1]);
+		args = parser(argv[1], count);
+		interpreter(args);
+		return (0);
 	}
 	for (loops = 1; 1; loops++)
 	{
 		printf("$ ");
 		if (getline(&line, &n, stdin) == EOF)
-			exit(0);
+			exit(EXIT_FAILURE);
 		my_pid = fork();
 		if (my_pid == 0)
 		{
@@ -35,12 +38,13 @@ int main(int argc, __attribute__((unused))char **argv, __attribute__((unused))ch
 		}
 		else if (my_pid == -1)
 		{
-			/*error*/
+			perror("Error");
 		}
 		else
 		{
 			wait(&status);
 		}
+		free(line);
 	}
 	return (0);
 }
