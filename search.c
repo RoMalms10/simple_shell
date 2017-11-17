@@ -26,6 +26,7 @@ int search(char **args)
 		if (stat(args[0], &sb) != -1)
 		{
 			args[0] = _strconcat(command[x], args[0]);
+			printf("Found the directory!\n");
 			break;
 		}
 	}
@@ -37,7 +38,7 @@ int search(char **args)
 //		free_function(2, command);
 		return (-1);
 	}
-//	free_function(2, command);
+	free_function(2, command);
 	return (0);
 }
 
