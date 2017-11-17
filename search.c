@@ -44,7 +44,7 @@ int search(char **args)
 	}
 	chdir(cwd);
 	if (command[x] == NULL)
-		perror("Error\n");
+		return (2);
 	return (0);
 }
 
