@@ -38,24 +38,6 @@ int search(char **args)
 }
 
 /**
-  * edit_equal_sign - gets rid of chars up until and including the 
-  * equal sign in the environment string
-  * @s: the string to modify
-  * Return: Nothing, void
-  */
-void edit_equal_sign(char **s)
-{
-	int x = 0;
-
-	while (s[0][x] != '=')
-	{
-		s[0][x] = ':';
-		x++;
-	}
-	s[0][x] = ':';
-}
-
-/**
   * search_builtins - searches the builtins for their functions
   * @args: contains the command to search for
   * Return: 0 on success
