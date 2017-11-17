@@ -29,6 +29,7 @@ int execution(char **args);
 int search(char **args);
 int _strcmp(char *s1, char*s2);
 int _strlen(char *s);
+char *find_path(char *name);
 char *_strconcat(char *s1, char *s2);
 char *_strdup(char *s);
 char **parser(char *line, int size);

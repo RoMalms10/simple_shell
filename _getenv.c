@@ -37,3 +37,18 @@ char *_getenv(const char *name)
 	}
 	return (NULL);
 }
+
+char *find_path(char *name)
+{
+	int x;
+	extern char **environ;
+
+	for (x = 0; environ[x] != NULL; x++)
+	{
+		if (_strcmp(environ[x], name) == 0)
+			break;
+		else if (environ[x + 1] == NULL)
+			perror("Error\n");
+	}
+	return (environ[x]);
+}
