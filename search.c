@@ -22,6 +22,7 @@ int search(char **args)
 	command = parser(hold, count);
 	for (x = 0; command[x] != NULL; x++)
 	{
+		chdir(command[x]);
 		if (stat(args[0], &sb) != -1)
 		{
 			args[0] = _strconcat(command[x], args[0]);

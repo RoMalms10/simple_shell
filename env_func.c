@@ -47,6 +47,8 @@ char *find_path(char *name)
 	{
 		if (_strcmp(environ[x], name) == 0)
 			break;
+		else if (environ[x + 1] == NULL)
+			perror("find path");
 	}
 	return (environ[x]);
 }
