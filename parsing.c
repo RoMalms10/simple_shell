@@ -30,7 +30,8 @@ int countargs(char *line)
 			flag = 0;
 		i++;
 	}
-	return (count);
+	/*count + 1 because need an extra space to assing NULL*/
+	return (count+1);
 }
 
 /**
@@ -52,7 +53,7 @@ char **parser(char *line, int size)
 	if (line == NULL || token_list == NULL)
 		return (NULL);
 	token = strtok(line, delim);
-	while (i < size)
+	while (token != NULL)
 	{
 		token_list[i] = _strdup(token);
 		if (token_list[i] == NULL)
@@ -63,6 +64,7 @@ char **parser(char *line, int size)
 		token = strtok(NULL, delim);
 		i++;
 	}
+	token_list[i] = token;
 	return (token_list);
 }
 
