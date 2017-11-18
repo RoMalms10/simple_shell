@@ -12,7 +12,6 @@ int main(__attribute__ ((unused)) int argc, char **argv)
 {
 	int loops, count;
 	char *line;
-	char *prompt = "$ ";
 	char **args;
 	size_t n;
 
@@ -23,7 +22,7 @@ int main(__attribute__ ((unused)) int argc, char **argv)
 		n = 0;
 		args = NULL;
 		if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, prompt, _strlen(prompt));
+			write(STDOUT_FILENO, "$ ", 2);
 		if (getline(&line, &n, stdin) == EOF)
 		{
 			if (isatty(STDIN_FILENO))
