@@ -15,6 +15,8 @@ int countargs(char *line)
 
 	flag = i = 0;
 	count = 1;
+	if (line == NULL)
+		return (count);
 	while (line[i] != '\0')
 	{
 		for (j = 0; delim[j] != '\0'; j++)

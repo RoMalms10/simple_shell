@@ -25,20 +25,17 @@ int main(__attribute__ ((unused)) int argc, char **argv)
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, prompt, _strlen(prompt));
 		if (getline(&line, &n, stdin) == EOF)
+		{
+			if (isatty(STDIN_FILENO))
+				write(STDOUT_FILENO, "\n", 1);
 			exit(EXIT_FAILURE);
+		}
 		count = countargs(line);
-		if (count == -1)
-		{
-			perror("count error");
-		}
 		args = parser(line, count);
-		if (args == NULL)
+		if (args != NULL)
 		{
-			;
-		}
-		else if (interpreter(args) == -1)
-		{
-			perror(argv[0]);
+			if (interpreter(args) == -1)
+				perror(argv[0]);
 		}
 		free_function(1, line);
 		free_function(2, args);
