@@ -12,6 +12,7 @@ int main(__attribute__ ((unused)) int argc, char **argv)
 {
 	int loops, count;
 	char *line;
+	char *prompt = "$ ";
 	char **args;
 	size_t n;
 
@@ -21,24 +22,25 @@ int main(__attribute__ ((unused)) int argc, char **argv)
 		line = NULL;
 		n = 0;
 		args = NULL;
-		printf("$ ");
+		write(STDOUT_FILENO, prompt, _strlen(prompt));
 		if (getline(&line, &n, stdin) == EOF)
 		{
-			printf("\n");
+			write(STDOUT_FILENO, "\n", 1);
 			exit(EXIT_FAILURE);
 		}
 		count = countargs(line);
 		if (count == -1)
 		{
-			perror("error");
+			perror("count error");
 		}
 		args = parser(line, count);
 		if (args == NULL)
-			free(line);
-		if (interpreter(args) == -1)
 		{
-			printf("%s: %d: ", argv[0], loops);
-			perror("Error");
+			;
+		}
+		else if (interpreter(args) == -1)
+		{
+			perror(argv[0]);
 		}
 		free_function(1, line);
 		free_function(2, args);

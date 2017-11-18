@@ -50,15 +50,17 @@ char **parser(char *line, int size)
 	char *delim = " :'\n'";
 
 	if (line == NULL || token_list == NULL)
-		exit(EXIT_FAILURE);
-
-	token = strtok(line, delim);
-	if (token == NULL)
 		return (NULL);
+	token = strtok(line, delim);
 	while (i < size)
 	{
 		token_list[i] = _strdup(token);
-		token = strtok(NULL, " :'\n'");
+		if (token_list[i] == NULL)
+		{
+			free_function(2, token_list);
+			return (NULL);
+		}
+		token = strtok(NULL, delim);
 		i++;
 	}
 	return (token_list);

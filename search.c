@@ -8,37 +8,31 @@
 int search(char **args)
 {
 	char **command = NULL;
-	char *name = "PATH";
-	int x, count;
-	char *hold, *cwd;
-	struct stat sb;
+	int count;
+	char *hold;
 
-	cwd = getcwd(NULL, 0);
-	hold = _strdup(find_path(name));
+	hold = _strdup(find_path("PATH"));
 	if (hold == NULL)
 		return (-1);
 	count = countargs(hold);
-	edit_equal_sign(&hold);
-	command = parser(hold, count);
-	for (x = 0; command[x] != NULL; x++)
+	if (count == -1)
 	{
-		chdir(command[x]);
-		if (stat(args[0], &sb) != -1)
-		{
-			args[0] = _strconcat(command[x], args[0]);
-			printf("Found the directory!\n");
-			break;
-		}
-	}
-	chdir(cwd);
-	free_function(1, cwd);
-	free_function(1, hold);
-	if (command[x] == NULL)
-	{
-//		free_function(2, command);
+		free_function(1, hold);
 		return (-1);
 	}
-	free_function(2, command);
+	edit_equal_sign(&hold);
+	command = parser(hold, count);
+	if (command == NULL)
+	{
+		free_function(1, hold);
+		return (-1);
+	}
+	if (search_dirs(command, args) == -1)
+	{
+		free_function(1, hold);
+		return (-1);
+	}
+	free_function(1, hold);
 	return (0);
 }
 
@@ -66,4 +60,43 @@ int search_builtins(char **args)
 	if (builtins[x].name == NULL)
 		return (-1);
 	return (check);
+}
+
+/**
+  *
+  *
+  *
+  *
+  */
+int search_dirs(char **command, char **args)
+{
+	char *cwd;
+	int x;
+	struct stat sb;
+
+	cwd = getcwd(NULL, 0);
+	for (x = 0; command[x] != NULL; x++)
+	{
+		chdir(command[x]);
+		if (stat(args[0], &sb) != -1)
+		{
+			args[0] = _strconcat(command[x], args[0]);
+			if (args[0] == NULL)
+			{
+				free_function(1, cwd);
+				free_function(2, command);
+				return (-1);
+			}
+			break;
+		}
+	}
+	chdir(cwd);
+	free_function(1, cwd);
+	if (command[x] == NULL)
+	{
+		free_function(2, command);
+		return (-1);
+	}
+	free_function(2, command);
+	return (0);
 }

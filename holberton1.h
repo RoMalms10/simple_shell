@@ -22,6 +22,7 @@ typedef struct ali {
 	/*function pointer*/
 } alias;
 
+int search_dirs(char **command, char **args);
 int search_builtins(char **args);
 int exit_function(void);
 int print_env(void);
