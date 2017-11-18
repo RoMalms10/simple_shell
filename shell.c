@@ -22,12 +22,10 @@ int main(__attribute__ ((unused)) int argc, char **argv)
 		line = NULL;
 		n = 0;
 		args = NULL;
-		write(STDOUT_FILENO, prompt, _strlen(prompt));
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, prompt, _strlen(prompt));
 		if (getline(&line, &n, stdin) == EOF)
-		{
-			write(STDOUT_FILENO, "\n", 1);
 			exit(EXIT_FAILURE);
-		}
 		count = countargs(line);
 		if (count == -1)
 		{
