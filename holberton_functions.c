@@ -88,7 +88,7 @@ int _strcmp(char *s1, char *s2)
 
 	diff = index = 0;
 	if (s1 == NULL || s2 == NULL)
-		return (diff); /*correct return??*/
+		return (-1);
 	while (s1[index] != '\0' && s2[index] != '\0')
 	{
 		diff = s1[index] - s2[index];
@@ -97,4 +97,27 @@ int _strcmp(char *s1, char *s2)
 		index++;
 	}
 	return (diff);
+}
+
+
+
+/**
+  * _atoi - Takes a string and converts the numbers into integers
+  * @s: The string to be checked
+  * Return: Nothing, void
+  */
+
+int _atoi(char *s)
+{
+	int x;
+	unsigned int number;
+
+	for (x = 0; s[x] != '\0'; x++)
+	{
+		if (s[x] > '9' && s[x] < '0')
+			return (-1);
+	}
+	for (x = 0; s[x] != '\0'; x++)
+		number = number * 10 + (s[x] - '0');
+	return (number);
 }

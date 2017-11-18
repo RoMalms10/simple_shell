@@ -31,7 +31,9 @@ int main(__attribute__ ((unused)) int argc, char **argv)
 		}
 		count = countargs(line);
 		args = parser(line, count);
-		if (args != NULL)
+		if (_strcmp(args[0], "exit") == 0)
+			exit_function(args, line);
+		else if (args != NULL)
 		{
 			if (interpreter(args) == -1)
 				perror(argv[0]);

@@ -5,10 +5,23 @@
   * leave this spot open for arguments when taking options
   * Return: 0 on success, will never make it there
   */
-int exit_function(void)
+int exit_function(char **args, char *line)
 {
-	exit(EXIT_SUCCESS);
-	return (0);
+	int number;
+
+	if (args[1] != NULL)
+		number = atoi(args[1]);
+	printf("%d\n", number);
+	if (number == -1)
+	{
+		return (0);
+	}
+	else
+	{
+		free_function(1, line);
+		free_function(2, args);
+		exit(number);
+	}
 }
 
 /**
@@ -21,6 +34,9 @@ int print_env(void)
 	int x;
 
 	for (x = 0; environ[x] != NULL; x++)
-		printf("%s\n", environ[x]);
+	{
+		write(STDOUT_FILENO, environ[x], _strlen(environ[x]));
+		write(STDOUT_FILENO, "\n", 1);
+	}
 	return (0);
 }

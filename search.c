@@ -44,7 +44,6 @@ int search(char **args)
 int search_builtins(char **args)
 {
 	builtin builtins[] = {
-		{"exit", exit_function},
 		{"env", print_env},
 		{NULL, NULL}
 	};
