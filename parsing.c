@@ -32,7 +32,7 @@ int countargs(char *line)
 			flag = 0;
 		i++;
 	}
-	/*count + 1 because need an extra space to assing NULL*/
+	/*count + 1 because need an extra space to assign NULL*/
 	return (count+1);
 }
 
