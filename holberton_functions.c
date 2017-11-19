@@ -110,11 +110,11 @@ int _strcmp(char *s1, char *s2)
 int _atoi(char *s)
 {
 	int x;
-	unsigned int number;
+	unsigned int number = 0;
 
 	for (x = 0; s[x] != '\0'; x++)
 	{
-		if (s[x] > '9' && s[x] < '0')
+		if ( s[x] > '9' || s[x] < '0')
 			return (-1);
 	}
 	for (x = 0; s[x] != '\0'; x++)
