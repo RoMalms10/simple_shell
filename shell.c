@@ -8,7 +8,7 @@
   * @argv: an array of pointers to chars, arguments
   * Return: 0, success, otherwise the child exits the functions on errors
   */
-int main(__attribute__ ((unused)) int argc, char **argv)
+int main(__attribute__((unused)) int argc, char **argv)
 {
 	int loops, count;
 	char *line;
@@ -32,8 +32,10 @@ int main(__attribute__ ((unused)) int argc, char **argv)
 		count = countargs(line);
 		args = parser(line, count);
 		if (_strcmp(args[0], "exit") == 0)
+		{
 			exit_function(args, line);
-		else if (args != NULL)
+		}
+		else if (args != NULL && args[0] != NULL)
 		{
 			if (interpreter(args) == -1)
 				perror(argv[0]);

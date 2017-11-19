@@ -11,7 +11,6 @@ int exit_function(char **args, char *line)
 
 	if (args[1] != NULL)
 		number = _atoi(args[1]);
-	printf("%d\n", number);
 	if (number == -1)
 	{
 		return (0);
