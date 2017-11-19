@@ -10,7 +10,7 @@ int exit_function(char **args, char *line)
 	int number;
 
 	if (args[1] != NULL)
-		number = atoi(args[1]);
+		number = _atoi(args[1]);
 	printf("%d\n", number);
 	if (number == -1)
 	{
