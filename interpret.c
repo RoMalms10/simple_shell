@@ -12,8 +12,6 @@ int interpreter(char **args)
 
 	if (stat(args[0], &sb) == -1)
 	{
-		/*if (search_aliases(args) == 0)
-			return;*/
 		/* will return 0 if the job succeeds, thus don't continue*/
 		if (search_builtins(args) == 0)
 			return (0);
@@ -56,4 +54,64 @@ void free_function(int n, ...)
 		free(dblptr);
 	}
 	va_end(valist);
+}
+
+/**
+  *
+  *
+  *
+  *
+  */
+void err_mess(char **argv, char **args, int loops)
+{
+	char *space = ": ";
+	char *err1 = "not found";
+	
+
+	write(STDERR_FILENO, argv[0], _strlen(argv[0]));
+	write(STDERR_FILENO, space, _strlen(space));
+	err_num(loops);
+	write(STDERR_FILENO, space, _strlen(space));
+	write(STDERR_FILENO, args[0], _strlen(args[0]));
+	write(STDERR_FILENO, space, _strlen(space));
+	write(STDERR_FILENO, err1, _strlen(err1));
+	write(STDERR_FILENO, "\n", 1);
+}
+
+/**
+  * err_num - prints numbers using write
+  * @loops: The integer to print
+  * Return: nothing, void
+  */
+
+void err_num(int loops)
+{
+	int x;
+	unsigned int n;
+	char num;
+
+	/*if (loops < 0)
+	{
+		n = loops * -1;
+		write(STDERR_FILENO, "-", 1);
+	}
+	else if (loops == 0)
+	{
+		num = loops + '0';
+		write(STDERR_FILENO, num, 1);
+		return;
+	}
+	else
+	{*/
+		n = loops;
+//	}
+	x = 1;
+	while ((n / x) > 9)
+		x *= 10;
+	while (x >= 1)
+	{
+		num = ((n / x) % 10) + '0';
+		write(STDERR_FILENO, &num, 1);
+		x /= 10;
+	}
 }

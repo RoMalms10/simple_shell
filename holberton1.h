@@ -17,11 +17,6 @@ typedef struct bin {
 	int (*func)(void);
 } builtin;
 
-typedef struct ali {
-	char *name;
-	/*function pointer*/
-} alias;
-
 int exit_function(char **args, char *line);
 int _atoi(char *s);
 int search_dirs(char **command, char **args);
@@ -39,5 +34,7 @@ char *_strdup(char *s);
 char **parser(char *line, int size);
 void edit_equal_sign(char **s);
 void free_function(int n, ...);
+void err_mess(char **argv, char **args, int loops);
+void err_num(int loops);
 
 #endif

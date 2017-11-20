@@ -53,7 +53,8 @@ int search_builtins(char **args)
 	check = 0;
 	for (x = 0; builtins[x].name != NULL; x++)
 	{
-		if (_strcmp(builtins[x].name, args[0]) == 0)
+		if (_strcmp(builtins[x].name, args[0]) == 0 &&
+				_strlen(builtins[x].name) == _strlen(args[0]))
 			check = builtins[x].func();
 	}
 	if (builtins[x].name == NULL)
