@@ -17,6 +17,8 @@ typedef struct bin {
 	int (*func)(void);
 } builtin;
 
+extern char **environ;
+
 int exit_function(char **args, char *line);
 int _atoi(char *s);
 int search_dirs(char **command, char **args);

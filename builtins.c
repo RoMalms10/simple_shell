@@ -30,7 +30,6 @@ int exit_function(char **args, char *line)
   */
 int print_env(void)
 {
-	extern char **environ;
 	int x;
 
 	for (x = 0; environ[x] != NULL; x++)
