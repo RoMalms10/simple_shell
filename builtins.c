@@ -2,7 +2,9 @@
 
 /**
   * exit_function - exits the shell
-  * leave this spot open for arguments when taking options
+  * @args: the arguments getting passed to exit
+  * args[1] will be the number to exit with
+  * @line: a malloc'd space that needs to be freed before exit
   * Return: 0 on success, will never make it there
   */
 int exit_function(char **args, char *line)

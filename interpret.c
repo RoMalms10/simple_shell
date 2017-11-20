@@ -28,9 +28,9 @@ int interpreter(char **args)
 }
 
 /**
-  *
-  *
-  *
+  * free_function - frees malloc'd spaces based on what number is passed
+  * @n: signifies whether to free a single pointer or double pointer
+  * Return: nothing, void
   */
 void free_function(int n, ...)
 {
@@ -60,16 +60,21 @@ void free_function(int n, ...)
 }
 
 /**
+  * err_mess - prints an error message "not found" when something doesn't work
   *
+  * @argv: the list of pointers to argument variables
+  * Used to print the name of the program
   *
+  * @args: the arguments collected by getline
   *
+  * @loops: the number of times the infinite loop has been executed
   *
+  *Return: nothing, void
   */
 void err_mess(char **argv, char **args, int loops)
 {
 	char *space = ": ";
 	char *err1 = "not found";
-	
 
 	write(STDERR_FILENO, argv[0], _strlen(argv[0]));
 	write(STDERR_FILENO, space, _strlen(space));

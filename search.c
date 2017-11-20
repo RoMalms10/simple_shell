@@ -1,7 +1,7 @@
 #include "holberton1.h"
 
 /**
-  * search - searches directories for the the command
+  * search - passing args to all the search functions
   * @args: contains the commands to search for
   * Return: -1 on failure, 0 on success
   */
@@ -63,10 +63,10 @@ int search_builtins(char **args)
 }
 
 /**
-  *
-  *
-  *
-  *
+  * search_dirs - searches directories until a command is found
+  * @command: contains pointers to all the directories in the PATH
+  * @args: contains the argument to look for
+  * Return: -1 on failure, 0 on success
   */
 int search_dirs(char **command, char **args)
 {

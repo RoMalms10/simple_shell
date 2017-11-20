@@ -12,7 +12,13 @@
 #include <sys/stat.h>
 #include <time.h>
 
-typedef struct bin {
+/**
+  * struct bin - contains variables that hold builtin information
+  * @name: the name of the builtin
+  * @func: the function pointer to the builtin
+  */
+typedef struct bin
+{
 	char *name;
 	int (*func)(void);
 } builtin;
@@ -27,7 +33,7 @@ int print_env(void);
 int countargs(char *line);
 int execution(char **args);
 int search(char **args);
-int _strcmp(char *s1, char*s2);
+int _strcmp(char *s1, char *s2);
 int _strlen(char *s);
 int interpreter(char **args);
 char *find_path(char *name);

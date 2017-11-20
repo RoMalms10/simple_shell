@@ -31,7 +31,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 		}
 		count = countargs(line);
 		args = parser(line, count);
-		if (_strcmp(args[0], "exit\n") == 0 && 
+		if (_strcmp(args[0], "exit") == 0 &&
 				(_strlen(args[0]) == _strlen("exit")))
 		{
 			exit_function(args, line);
@@ -39,7 +39,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 		else if (args != NULL && args[0] != NULL)
 		{
 			if (interpreter(args) == -1)
-				err_mess(argv, args, loops);/*may need to pass a number to indicate which message to print*/
+				err_mess(argv, args, loops);
 		}
 		free_function(1, line);
 		free_function(2, args);

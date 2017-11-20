@@ -24,7 +24,7 @@ char *_strdup(char *s)
 }
 
 /**
-  * str_concat - concatenate 2 strings in a new string, even when passed NULL
+  * _strconcat - concatenate 2 strings in a new string, even when passed NULL
   * used to make the PATH to print out or use commands
   * @s1: the first string
   * @s2: the second string
@@ -114,7 +114,7 @@ int _atoi(char *s)
 
 	for (x = 0; s[x] != '\0'; x++)
 	{
-		if ( s[x] > '9' || s[x] < '0')
+		if (s[x] > '9' || s[x] < '0')
 			return (-1);
 	}
 	for (x = 0; s[x] != '\0'; x++)
