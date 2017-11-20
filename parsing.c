@@ -50,7 +50,7 @@ char **parser(char *line, int size)
 	char **token_list = malloc(sizeof(char *) * size);
 	char *token;
 	int i = 0;
-	char *delim = " :'\n'";
+	char *delim = " :'\n''\t'";
 
 	if (line == NULL || token_list == NULL)
 		return (NULL);
