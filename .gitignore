@@ -1,0 +1,26 @@
+# Ignore All
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all directories
+!*/
+
+# Ignore emacs autosave~ and #modified# files
+*~
+**/*~
+**/\#*
+
+# Ignore main files
+**/*main.c
+
+# Ignore object files and libraries
+*.o
+*.ko
+*.obj
+*.elf
+
+# Ignore _putchar.c and a.out
+**/_putchar.c
+**/a.out
