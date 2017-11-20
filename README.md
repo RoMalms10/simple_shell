@@ -7,6 +7,7 @@ Our shell was built and tested in the Ubuntu 14.04 LTS via Vagrant in VirtualBox
 
 ### Repository Contents
 Our shell includes the following files:
+
 |  **File**  |   **Description**   |
 | ------------ | --------------------- |
 | builtins.c | Contains the exit and printenv functions |
@@ -20,6 +21,7 @@ Our shell includes the following files:
 | shell.c | Contains the main function |
 
 ### Description of Functions
+
 | **Function** | **Description** |
 | -------------- | ---------------- |
 | int exit_function(char **args, char *line) | Frees the memory allocated to the 'args' string array and 'line' string before exiting the shell. |
@@ -46,8 +48,7 @@ Our shell includes the following files:
 ### How to Install
 Clone the below repository and compile the files into an executable using the GCC compiler.
 ```
-
-https://github.com/RoMalms10/printf
+https://github.com/RoMalms10/simple_shell
 ```
 
 ### Compilation
