@@ -20,9 +20,9 @@ int execution(char **args)
 		if (execve(args[0], args, NULL) == -1)
 			exit(EXIT_FAILURE);
 	}
-	else if (child_pid < 0)
-		perror("execution");
 	else
+	{
 		wait(&status);
-	return (1);
+	}
+	return (0);
 }

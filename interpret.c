@@ -10,15 +10,15 @@ int interpreter(char **args)
 {
 	struct stat sb;
 
-	if (stat(args[0], &sb) == -1)
-	{
-		/* will return 0 if the job succeeds, thus don't continue*/
-		if (search_builtins(args) == 0)
-			return (0);
-		/*will return -1 if failure happened*/
-		if (search(args) == -1)
-			return (-1);
-	}
+	/* will return 0 if the job succeeds, thus don't continue*/
+	if (search_builtins(args) == 0)
+		return (0);
+	/*will return -1 if failure happened*/
+	search(args);
+	/*S_ISREG checks to see if args[0] is a file*/
+	/*Will return 0 if it's not a file*/
+	if (stat(args[0], &sb) == -1 && S_ISREG(sb.st_mode) == 0)
+		return (-1);
 	if (execution(args) == -1)
 		return (-1);
 	return (0);
@@ -90,21 +90,7 @@ void err_num(int loops)
 	unsigned int n;
 	char num;
 
-	/*if (loops < 0)
-	{
-		n = loops * -1;
-		write(STDERR_FILENO, "-", 1);
-	}
-	else if (loops == 0)
-	{
-		num = loops + '0';
-		write(STDERR_FILENO, num, 1);
-		return;
-	}
-	else
-	{*/
-		n = loops;
-//	}
+	n = loops;
 	x = 1;
 	while ((n / x) > 9)
 		x *= 10;

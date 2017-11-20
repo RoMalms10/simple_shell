@@ -77,8 +77,10 @@ int search_dirs(char **command, char **args)
 	cwd = getcwd(NULL, 0);
 	for (x = 0; command[x] != NULL; x++)
 	{
+		if (args[0][0] == '/')
+			break;
 		chdir(command[x]);
-		if (stat(args[0], &sb) != -1)
+		if (stat(args[0], &sb) == 0)
 		{
 			args[0] = _strconcat(command[x], args[0]);
 			if (args[0] == NULL)
