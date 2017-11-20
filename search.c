@@ -79,6 +79,8 @@ int search_dirs(char **command, char **args)
 	{
 		if (args[0][0] == '/')
 			break;
+		if (_strcmp(args[0], "./") == 0)
+			break;
 		chdir(command[x]);
 		if (stat(args[0], &sb) == 0)
 		{

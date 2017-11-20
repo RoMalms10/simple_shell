@@ -17,7 +17,10 @@ int interpreter(char **args)
 	search(args);
 	/*S_ISREG checks to see if args[0] is a file*/
 	/*Will return 0 if it's not a file*/
-	if (stat(args[0], &sb) == -1 && S_ISREG(sb.st_mode) == 0)
+	if (stat(args[0], &sb) == -1) /*if stat doesn't find anything*/
+		return (-1);
+	/*if stat populates the struct, check if it's a file*/
+	if (stat(args[0], &sb) == 0 && S_ISREG(sb.st_mode) == 0)
 		return (-1);
 	if (execution(args) == -1)
 		return (-1);

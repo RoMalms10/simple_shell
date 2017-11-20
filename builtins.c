@@ -9,6 +9,7 @@ int exit_function(char **args, char *line)
 {
 	int number;
 
+	number = 0;
 	if (args[1] != NULL)
 		number = _atoi(args[1]);
 	if (number == -1)
