@@ -34,7 +34,8 @@ int main(__attribute__((unused)) int argc, char **argv)
 		if (_strcmp(args[0], "exit") == 0 &&
 				(_strlen(args[0]) == _strlen("exit")))
 		{
-			exit_function(args, line);
+			if (exit_function(args, line) == -1)
+				err_mess(argv, args, loops);
 		}
 		else if (args != NULL && args[0] != NULL)
 		{
