@@ -44,5 +44,6 @@ void edit_equal_sign(char **s);
 void free_function(int n, ...);
 void err_mess(char **argv, char **args, int loops);
 void err_num(int loops);
+void _sigign(int sig);
 
 #endif

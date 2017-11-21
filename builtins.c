@@ -41,3 +41,14 @@ int print_env(void)
 	}
 	return (0);
 }
+
+/**
+  * _sigign - checks if the signal was SIGINT, then prints a \n and the prompt
+  * @sig: the number of the signal
+  * Return: nothing, void
+  */
+void _sigign(int sig)
+{
+	if (sig == SIGINT)
+		write(STDOUT_FILENO, "\n$ ", 3);
+}

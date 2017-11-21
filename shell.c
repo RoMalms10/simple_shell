@@ -15,7 +15,7 @@ int main(__attribute__((unused)) int argc, char **argv)
 	char **args;
 	size_t n;
 
-	signal(SIGINT, SIG_IGN);
+	signal(SIGINT, _sigign);
 	for (loops = 1; 1; loops++)
 	{
 		line = NULL;
