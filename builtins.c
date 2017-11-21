@@ -16,7 +16,7 @@ int exit_function(char **args, char *line)
 		number = _atoi(args[1]);
 	if (number == -1)
 	{
-		return (0);
+		exit(0);
 	}
 	else
 	{
