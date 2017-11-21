@@ -1,5 +1,5 @@
-.TH hsh man 1 "16 November 2017" "v 1.0" "hsh Manual
-"
+.TH hsh man 1 "16 November 2017" "v 1.0" "hsh Manual"
+
 .SH NAME
 .B ./hsh
 - A simple UNIX command line interpreter.
