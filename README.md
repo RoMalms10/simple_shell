@@ -26,7 +26,7 @@ Our shell includes the following files:
 | -------------- | ---------------- |
 | int exit_function(char **args, char *line) | Frees the memory allocated to the 'args' string array and 'line' string before exiting the shell. |
 | int print_env(void) | Prints a list of the current users environment variables. |
-| void _sigign(int sig) | Checks if the end of transmission (ctr + c) signal was entered and ignores it |
+| void _sigign(int sig) | Checks if the end of transmission (ctrl + c) signal was entered and ignores it |
 | char *find_path(char *name) | Locates the PATH variable in the environment. Returns a string containing the PATH. |
 | int execution(char **args) | Creates a child process and executes a new program within it. Returns an integer value indicating success or failure. |
 | char *_strdup(char *s) | Duplicates a string and returns a pointer to the newly allocated space in memory |
