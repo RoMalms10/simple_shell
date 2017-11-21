@@ -5,8 +5,7 @@
 - A simple UNIX command line interpreter.
 
 .SH SYNOPSIS
-.B ./hsh
- [options] [command_string | file]
+.B ./hsh [options] [command_string | file]
 
 .SH DESCRIPTION
 .LP
