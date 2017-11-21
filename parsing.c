@@ -33,7 +33,7 @@ int countargs(char *line)
 		i++;
 	}
 	/*count + 1 because need an extra space to assign NULL*/
-	return (count+1);
+	return (count + 1);
 }
 
 /**
@@ -50,7 +50,7 @@ char **parser(char *line, int size)
 	char **token_list = malloc(sizeof(char *) * size);
 	char *token;
 	int i = 0;
-	char *delim = " :'\n'";
+	char *delim = " :'\n''\t'";
 
 	if (line == NULL || token_list == NULL)
 		return (NULL);
@@ -72,7 +72,7 @@ char **parser(char *line, int size)
 
 
 /**
-  * edit_equal_sign - gets rid of chars up until and including the 
+  * edit_equal_sign - gets rid of chars up until and including the
   * equal sign in the environment string
   * @s: the string to modify
   * Return: Nothing, void

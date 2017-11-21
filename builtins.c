@@ -2,7 +2,9 @@
 
 /**
   * exit_function - exits the shell
-  * leave this spot open for arguments when taking options
+  * @args: the arguments getting passed to exit
+  * args[1] will be the number to exit with
+  * @line: a malloc'd space that needs to be freed before exit
   * Return: 0 on success, will never make it there
   */
 int exit_function(char **args, char *line)
@@ -14,7 +16,7 @@ int exit_function(char **args, char *line)
 		number = _atoi(args[1]);
 	if (number == -1)
 	{
-		return (0);
+		return (-1);
 	}
 	else
 	{
@@ -30,7 +32,6 @@ int exit_function(char **args, char *line)
   */
 int print_env(void)
 {
-	extern char **environ;
 	int x;
 
 	for (x = 0; environ[x] != NULL; x++)
@@ -39,4 +40,15 @@ int print_env(void)
 		write(STDOUT_FILENO, "\n", 1);
 	}
 	return (0);
+}
+
+/**
+  * _sigign - checks if the signal was SIGINT, then prints a \n and the prompt
+  * @sig: the number of the signal
+  * Return: nothing, void
+  */
+void _sigign(int sig)
+{
+	if (sig == SIGINT)
+		write(STDOUT_FILENO, "\n$ ", 3);
 }
