@@ -28,14 +28,18 @@ ogram via the pipe character '|'. For example:
 .\&$ echo "hello world" | ./hsh
 
 .SH INSTALLATION
-.RE
-To install:
-.RS
+			To install:
+.br
+
 git clone https://github.com/RoMalms10/simple_shell.git
-.RE
-Compile files using:
-.RS
+.br
+
+			Compile files using:
+.br
+
 gcc -Wall -Werror -Wextra -pedantic *.c -o hsh
+.br
+.br
 
 A prompt will appear for the user to enter and execute commands by typing command names and pressing the return key. A user can also pipe commands into the program via the pipe character '|'. For example:
 .\&$ echo "hello world" | ./hsh
